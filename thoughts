@@ -1,0 +1,14 @@
+
+给一个对列表项做适配的选择。
+
+关于容器的使用：将几个相同的组件放在一起。
+
+about list:
+
+	just store data.not a plane.need an index to recover the plane before.
+
+about notification:
+
+	just support an singleton to store target and callback.
+
+something is my job.something is not my job.I just do my job.

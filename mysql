@@ -1,0 +1,19 @@
+sudo mysqld_safe --skip-grant-tables  取消权限
+mysql -u root		
+update mysql.user set password=password('root') where user='root';
+flush privileges;
+
+修改密码。
+
+grant 权限[(select, insert, update, delete),all] on 数据库(mysql/*).表(name/*) to 用户名@登录主机(localhost/'%') identified by 密码
+grant all on *.* to reid@'%' identified by 'abc';
+
+create database <name>
+show databases;
+drop database <name>
+
+create table <table name>(<name1><type1>[,,,,])
+drop table<name>
+desc <table name> / show columns from <table name> 显示表结构；
+
+insert into <name>[(<name1>[,,,,])]values(1)[,,,,]

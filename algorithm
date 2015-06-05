@@ -1,0 +1,8 @@
+
+color mix: 两个有透明度的层混合。
+首先颜色是返回光在眼中的映射。
+透过第一层会有alpha1 x （r1，g1，b1）返回，
+剩下（1-alpha1）穿透到第二层
+第二层会有（1-alpha1）x alpha2 x （r2，g2，b2）
+再穿过第一层的时候只有（1-alpha1）能穿过
+故最后的结果是alpha1 x （r1，g1，b1）＋（1-alpha1）x alpha2 x（r2，g2，b2）x（1-alpha1）
