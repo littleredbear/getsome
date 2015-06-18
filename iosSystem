@@ -1,0 +1,15 @@
+
+系统架构
+
+ios								mac os
+
+
+core os							core os
+core services					core services
+media							media
+cocoa touch						cocoa
+
+core os 是核心操作系统层。iPhone OS 提供了许多访问操作系统底层功能的接口集，iPhone应用通过LibSystem库来访问这些功能。
+POSIX线程，BSD socket 文件系统，标准IO，Bonjour和DNS服务，现场信息，内存分配，数学计算。许多core OS技术的头文件位于目录<iphone SDK>/usr/include/,iphone SDK是sdk的安装目录。
+
+core service包含了foundation.framwork和core foundation.framwork.foundation是属于ojc－c的api，core foundation是属于c的api。
