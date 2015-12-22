@@ -1,4 +1,7 @@
 
+http://idea.lanyus.com
+
+
 
 php允许使用短标记<?和?>，但不鼓励使用。只有通过激活php.ini中的short_open_tag配置指令或者在编译php时使用了配置选项--enable-short-tags时才能使用短标记。
 
