@@ -1,0 +1,32 @@
+
+以＃开头的语句视为预编译命令
+
+＃include 包含头文件
+＃if	条件
+＃else	否则
+＃elif	否则如果
+＃endif	结束条件
+＃ifdef	／＃if defined	如果定义了一个符号
+＃ifndef／＃if !defined	如果没有定义一个符号
+＃define	定义一个符号
+＃undef	删除一个符号
+＃line	重新定义当前行号和文件名
+＃error	输出编译错误消息，停止编译
+＃pragma	提供机器专用特性，提供非常规的控制流信息
+
+
+#define		1.不支持类型检查 2.不考虑作用域	3.符号名不能限制在一个命名空间中
+#define STR(a)	#a	变成字符串
+#define join(a,b) a##b     参数连接
+join(10,999)会输出10999
+
+assert()宏 在标准库头文件<cassert>中声明，用于测试一个逻辑表达式，如果表达式为false，则终止程序，显示诊断消息。
+
+#pragma message("消息文本")	打印
+#pragma pack(n)		设置子节对齐数	
+#pragma pop		取消字节对齐数
+
+
+
+
+
