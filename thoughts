@@ -14,3 +14,5 @@ about notification:
 something is my job.something is not my job.I just do my job.
 
 use the least codes to implementate a function
+
+用户程序的本质就是一套“以计算机形式进行描述的用户事物处理方案”，这套方案要通过计算机的运算得到结果，而计算机的运算是由其主机部分完成的。可见，用户程序运行的最根本目的就是通过逐级对其处理问题的方案进行运算。
