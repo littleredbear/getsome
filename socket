@@ -1,7 +1,7 @@
 
 struct in_addr {
 	in_addr_t	s_addr; //uint32_t
-}
+};
 
 struct sockaddr_in {
 	uint_8		sin_len;	
@@ -9,17 +9,17 @@ struct sockaddr_in {
 	in_port_t	sin_port;	//uint16_t
 	struct in_addr	sin_addr;	
 	char		sin_zero[8];
-}
+};
 
 struct sockaddr {
 	uint8_t		sa_len;
 	sa_family_t	sa_family;
 	char		sa_data[14];
-}
+};
 
 struct in6_addr {
 	char s6_addr[16];
-}
+};
 
 struct sockaddr_in6 {
 	uint8_t		sin6_len;
@@ -28,7 +28,20 @@ struct sockaddr_in6 {
 	uint32_t	sin6_flowinfo;
 	struct in6_addr	sin6_addr;
 	uint32_t	sin6_scope_id;
-}
+};
+
+struct addrinfo {
+	int	ai_flags;
+	int 	ai_family;
+	int	ai_socktype;
+	int	ai_protocol;
+	size_t	ai_addrlen;
+	char	*ai_canonname;
+	struct sockaddr		*ai_addr;
+	struct addrinfo		*ai_next;
+};
 
 从进程到内核传递地址结构：bind,connect,sendto.
 从内核到进程传递地址结构：accept,recvfrom,getsockname,getpeername.
+
+getaddrinfo 中两个参数hostname由/etc/hosts文件进行配置，service由/etc/services文件进行配置

@@ -1,0 +1,23 @@
+
+思考：
+	计算机在有生之年应该不会产生本质上的变化，最底层是流式的，而面向对象编程的本质也是为了避免重复写代码，可以看成是块式的，不过切分不够细，一个对象块可能会出现在好几个流里面。
+猜想：
+	或许可以思考一种以粒子式切分的组织方式，或者说是最小分割。每个最小分割只出现在一条流里面。那样既可以有对象编程的避免重复，也不会出现底层上的违和感。
+
+
+pthread并非Linux系统的默认库，而是POSIX线程库。在Linux中将其作为一个库来使用，因此加上-lpthread以显式链接该库。
+
+pthread面向对象封装：
+class Thread {
+	void start() {
+		pthread_create(&thread_id, NULL, ThreadFunc, this);
+	};
+
+	static void * ThreadFunc (void *pth) {
+		Thread *p = static_cast<Thread *>(pth);
+		p->Run();
+	};
+
+	virtual void Run() = 0;	
+
+};
