@@ -1,0 +1,56 @@
+Linux多线程服务端编程使用muduo c++网络库
+
+
+在面向对象程序设计中，对象的关系主要有三种：composition,aggregation,association.关系由强到弱
+association是一般的关联。aggregation和composition都有整体和部分的关系，其中aggregation中的部分脱离了整体，部分仍然有意义，composition的部分脱离了整体，部分没有意义。
+
+shared_ptr是引用计数型智能指针，weak_ptr也是一个引用计数型智能指针，但它不增加对象的引用次数。
+
+c++内存问题大致有：
+1.缓冲区溢出
+2.空悬指针／野指针
+3.重复释放
+4.内存泄漏
+5.不配对的new／delete
+6.内存碎片
+
+shared_ptr 本身不是线程安全的
+
+条件变量：条件变量只有一种正确使用的方式。对于wait端：
+1.必须与mutex一起使用，该布尔表达式的读写需受此mutex保护。
+2.在mutex已上锁的时候才能调用wait()。
+3.把判断布尔条件和wait()放到while循环中。（可能有spurious wakeup)
+
+对于signal/broadcast端：
+1.不一定要在mutex已上锁的情况下调用signal（理论上）
+2.在signal之前一般要修改布尔表达式
+3.修改布尔表达式通常要用mutex保护。
+4.注意区分signal与broadcast
+
+如果一个设计难以实现，应该首先要检讨设计。
+
+提供灵活性固然是本事，然而在不需要灵活性的地方把代码写死，更需要大智慧。
+
+copy_on_write:在read端，用一个栈上局部变量当作观察者，使引用计数＋1.对于write端，当g_foos.unique()为false，说明别的线程正在读取，不能原地修改，而是复制一份，在副本上修改。
+
+有两种场合必须使用单线程：
+1.程序可能会fork
+2.限制程序的cpu占用率
+
+线程不能减少工作量，即不能减少CPU事件。如果解决一个问题需要执行一亿条指令，那么多线程只会让这个数字增加。
+
+学习多线程编程面临的最大的思维方式的转变有两点：
+1.当前线程可能随时会被切换出去。
+2.多线程程序中事件的发生顺序不再有全局统一的先后关系。
+
+程序中出现pthread_{cancel,kill}，则通常意味着设计出了问题。
+
+内存模型：从理论上讲，如果没有合适的内存模型，编写正确的多线程程序属于撞大运行为。
+
+gdb通过一个系统调用ptrace来接管程序。
+#include<sys/ptrace.h>
+int ptrace(int request, int pid, int addr, int data)
+
+
+
+
