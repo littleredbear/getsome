@@ -31,3 +31,7 @@ core image：核心映像，就是进程执行当时的内存内容。
 
 值语义：所谓值语义是指目标对象由源对象拷贝生成，且生成后与源对象完全无关。就像int类型变量相互拷贝一样。
 对象语义：也叫指针语义，引用语义等。通常指一个目标对象由源对象拷贝生成，但生成后与源对象之间依然共享底层资源。
+
+EventLoop:包含一个normalChannel，一个bandChannel，一个Poller。
+EventCenter(ThreadPool):控制所有的Thread，分发Event，（在Event调用过程中可以在其他线程处理的Event，尽量把Event细分，在Event调用栈里面，使用ThreadPool来分发任务）
+
