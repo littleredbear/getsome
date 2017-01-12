@@ -42,4 +42,7 @@ core image：核心映像，就是进程执行当时的内存内容。
 EventLoop:包含一个normalChannel，一个bandChannel，一个Poller。
 EventCenter(ThreadPool):控制所有的Thread，分发Event，（在Event调用过程中可以在其他线程处理的Event，尽量把Event细分，在Event调用栈里面，使用ThreadPool来分发任务）
 
+关于多线程：
+1.多线程的本质就是差异性。所以多线程要在设计上分配好任务。让每个线程处理不同的任务，而不是相同的任务。
+2.而让多线程处理相同的任务。这个不是多线程的考虑范围内，应该由另外的一个模块进行任务分类。
 
